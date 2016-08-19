@@ -1,0 +1,10 @@
+{
+    "name": "reecube/php-cubes",
+    "authors": [
+        {
+            "name": "Yves Riedener",
+            "email": "git@reecube.com"
+        }
+    ],
+    "require": {}
+}

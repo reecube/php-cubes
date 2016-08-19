@@ -1,5 +1,7 @@
 <?php
 
-require_once('Autoloader.php');
+require_once('autoload.php');
 
-echo 'success';
+echo \core\index\Controller::VERSION . "\n";
+
+var_dump(\core\index\Controller::DEPENDENCIES);
