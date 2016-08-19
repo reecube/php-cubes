@@ -1,17 +1,12 @@
 <?php
 
-namespace core\index {
+namespace core\base {
     abstract class Cube
     {
-        const VERSION = '1.0.0';
+        const VERSION = '4.5.6';
         const DEPENDENCIES = array(
-            'cubes' => array(
-                'base' => '4.5.6',
-            ),
-            'core' => array(
-                'base' => '4.5.6',
-                'index' => '2.0.0',
-            ),
+            'cubes' => array(),
+            'core' => array(),
             'vendor' => array(),
         );
 
