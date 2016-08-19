@@ -6,15 +6,18 @@ namespace core\base {
 
         public function sayHelloWorld()
         {
-            echo 'Hello World from "base"';
+            \base\Console::printLine('Hello World from "base"');
         }
 
         public function doTheBaseFnc()
         {
-            echo 'This is the base function!';
+            \base\Console::printLine('This is the base function!');
         }
 
-        public function init()
+        /**
+         * @param \base\Application $app
+         */
+        public function init($app)
         {
             // TODO: Implement init() method.
         }

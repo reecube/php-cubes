@@ -3,9 +3,26 @@
 namespace core\index {
     class Controller implements Gateway
     {
-        public function init()
+        /**
+         * @var \base\Application $app
+         */
+        protected $app;
+
+        /**
+         * @var \core\base\Gateway $cubeBase
+         */
+        protected $cubeBase;
+
+        /**
+         * @param \base\Application $app
+         */
+        public function init($app)
         {
-            // TODO: Implement init() method.
+            $this->app = $app;
+
+            $this->cubeBase = $app->getCube('core', 'base');
+
+            $this->cubeBase->doTheBaseFnc();
         }
     }
 }

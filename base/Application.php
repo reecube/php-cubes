@@ -80,9 +80,21 @@ namespace base {
              */
             $gateway = $Cube::getGateway();
 
-            $gateway->init();
+            $gateway->init($this);
 
             $this->cubes[$classname] = $gateway;
+        }
+
+        /**
+         * @param $path
+         * @param $name
+         * @return \base\interfaces\Gateway
+         */
+        public function getCube($path, $name)
+        {
+            $classname = '\\' . $path . '\\' . $name . '\\Cube';
+
+            return isset($this->cubes[$classname]) ? $this->cubes[$classname] : null;
         }
     }
 }

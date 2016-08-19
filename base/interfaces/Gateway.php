@@ -3,6 +3,9 @@
 namespace base\interfaces {
     interface Gateway
     {
-        public function init();
+        /**
+         * @param \base\Application $app
+         */
+        public function init($app);
     }
 }
