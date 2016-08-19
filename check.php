@@ -94,6 +94,39 @@ class Check
 
     /**
      * TODO
+     *
+     * @param string $pattern
+     * @param string $subject
+     * @return bool
+     */
+    protected function checkVersion($pattern, $subject)
+    {
+        $result = true;
+
+        $ap = explode('.', $pattern);
+        $cp = count($ap);
+
+        $as = explode('.', $subject);
+        $cs = count($as);
+
+        $min = $cp < $cs ? $cp : $cs;
+
+        for ($i = 0; $i < $min; $i++) {
+            if ($ap[$i] != $as[$i]) {
+                $tmpP = preg_replace('/[^0-9]/', '', $ap[$i]);
+                $tmpS = preg_replace('/[^0-9]/', '', $as[$i]);
+
+                if (strlen($tmpP) > 0 && $tmpP != $tmpS) {
+                    $result = false;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * TODO
      */
     protected function checkDependencies()
     {
@@ -110,8 +143,7 @@ class Check
                     if (isset($this->cubes[$cdClass])) {
                         $theVersion = $this->cubes[$cdClass];
 
-                        // TODO: use regexp
-                        if ($cdVersion == $theVersion) {
+                        if ($this->checkVersion($cdVersion, $theVersion)) {
                             $this->printStatus('valid', $cdClass . ' ' . $cdVersion);
                         } else {
                             $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" requested by "' . $Cube . '" does exist but has a wrong version!');

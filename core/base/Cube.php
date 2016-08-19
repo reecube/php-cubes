@@ -6,7 +6,9 @@ namespace core\base {
         const VERSION = '4.5.6';
         const DEPENDENCIES = array(
             'cubes' => array(),
-            'core' => array(),
+            'core' => array(
+                'index' => '1.x.x',
+            ),
             'vendor' => array(),
         );
 
