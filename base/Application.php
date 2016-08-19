@@ -66,9 +66,14 @@ namespace base {
             $namespace = '\\' . str_replace('/', '\\', $path);
 
             /**
-             * @var \base\interfaces\Cube $Cube
+             * @var \core\index\Cube $Cube
              */
             $Cube = $namespace . '\\Cube';
+
+            /**
+             * @var string $classname
+             */
+            $classname = $Cube;
 
             /**
              * @var \base\interfaces\Gateway $gateway
@@ -77,7 +82,7 @@ namespace base {
 
             $gateway->init();
 
-            $this->cubes[$Cube] = $gateway;
+            $this->cubes[$classname] = $gateway;
         }
     }
 }
