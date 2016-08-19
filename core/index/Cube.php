@@ -5,12 +5,9 @@ namespace core\index {
     {
         const VERSION = '1.0.0';
         const DEPENDENCIES = array(
-            'cubes' => array(
-                'base' => '4.5.6',
-            ),
+            'cubes' => array(),
             'core' => array(
-                'base' => '4.5.6',
-                'index' => '2.0.0',
+                'base' => '1.x.x',
             ),
             'vendor' => array(),
         );
@@ -18,7 +15,8 @@ namespace core\index {
         /**
          * @return Gateway
          */
-        public static function getGateway() {
+        public static function getGateway()
+        {
             return new Controller();
         }
     }

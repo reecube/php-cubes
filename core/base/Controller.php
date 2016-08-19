@@ -6,7 +6,7 @@ namespace core\base {
 
         public function sayHelloWorld()
         {
-            echo 'Hello World';
+            echo 'Hello World from "base"';
         }
 
         public function doTheBaseFnc()

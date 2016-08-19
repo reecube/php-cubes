@@ -6,7 +6,7 @@ namespace core\index {
 
         public function sayHelloWorld()
         {
-            echo 'Hello World';
+            echo 'Hello World from "index"';
         }
     }
 }
