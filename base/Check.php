@@ -14,47 +14,6 @@ namespace base {
         protected $cubes;
 
         /**
-         * Will print the message with a new line.
-         *
-         * @param string $msg the message
-         */
-        protected function printLine($msg = '')
-        {
-            echo $msg . "\n";
-        }
-
-        /**
-         * Will print the message with nice head decoration.
-         *
-         * @param string $msg the message
-         */
-        protected function printHead($msg)
-        {
-            $msg = '# ' . $msg . ' #';
-            $hr = '';
-
-            while (strlen($hr) < strlen($msg)) {
-                $hr .= '#';
-            }
-
-            $this->printLine($hr);
-            $this->printLine($msg);
-            $this->printLine($hr);
-            $this->printLine('');
-        }
-
-        /**
-         * Will print the message as a new status line.
-         *
-         * @param string $status the status
-         * @param string $msg the message
-         */
-        protected function printStatus($status, $msg)
-        {
-            $this->printLine('[' . $status . '] ' . $msg);
-        }
-
-        /**
          * TODO
          *
          * @param string $path
@@ -70,12 +29,12 @@ namespace base {
          */
         public function checkCubes()
         {
-            $this->printHead('This file will check the project configuration.');
+            Console::printHead('This file will check the project configuration.');
 
             $this->dependencies = array();
             $this->cubes = array();
 
-            $this->printStatus('info', 'Loading the cubes:');
+            Console::printStatus('info', 'Loading the cubes:');
             foreach (Application::PATHS as $path) {
                 foreach ($this->getDirectories($path) as $pathCube) {
                     $this->loadCube($pathCube);
@@ -124,8 +83,8 @@ namespace base {
          */
         protected function checkDependencies()
         {
-            $this->printLine();
-            $this->printStatus('info', 'Looking for the dependencies:');
+            Console::printLine();
+            Console::printStatus('info', 'Looking for the dependencies:');
 
             $issues = 0;
 
@@ -138,9 +97,9 @@ namespace base {
                             $theVersion = $this->cubes[$cdClass];
 
                             if ($this->checkVersion($cdVersion, $theVersion)) {
-                                $this->printStatus('valid', $cdClass . ' ' . $cdVersion);
+                                Console::printStatus('valid', $cdClass . ' ' . $cdVersion);
                             } else {
-                                $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" requested by "' . $Cube . '" does exist but has a wrong version!');
+                                Console::printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" requested by "' . $Cube . '" does exist but has a wrong version!');
                                 $issues++;
                             }
                         } else {
@@ -153,11 +112,11 @@ namespace base {
                 // TODO: check for vendors with composer
             }
 
-            $this->printLine();
+            Console::printLine();
             if ($issues <= 0) {
-                $this->printStatus('success', 'The dependency-setup is valid.');
+                Console::printStatus('success', 'The dependency-setup is valid.');
             } else {
-                $this->printStatus('error', 'There are ' . $issues . ' issues in your dependency-setup!');
+                Console::printStatus('error', 'There are ' . $issues . ' issues in your dependency-setup!');
             }
         }
 
@@ -169,11 +128,21 @@ namespace base {
         public function loadCube($path)
         {
             $namespace = '\\' . str_replace('/', '\\', $path);
-            $Cube = $namespace . '\\Cube';
-            $this->dependencies[$Cube] = $Cube::DEPENDENCIES;
-            $this->cubes[$Cube] = $Cube::VERSION;
 
-            $this->printStatus('loaded', $Cube . ' ' . $Cube::VERSION);
+            /**
+             * @var \core\index\Cube $Cube
+             */
+            $Cube = $namespace . '\\Cube';
+
+            /**
+             * @var string $classname
+             */
+            $classname = $Cube;
+
+            $this->dependencies[$classname] = $Cube::DEPENDENCIES;
+            $this->cubes[$classname] = $Cube::VERSION;
+
+            Console::printStatus('loaded', $Cube . ' ' . $Cube::VERSION);
         }
     }
 }
