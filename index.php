@@ -1,7 +1,15 @@
 <?php
 
+$tsBefore = microtime(true) * 1000;
+
 require_once('autoload.php');
 
-$index = \core\index\Cube::getGateway();
+$app = new \base\Application();
 
-$index->call();
+$app->start();
+
+$tsAfter = microtime(true) * 1000;
+
+$timePassed = $tsAfter - $tsBefore;
+
+echo 'Time passed: ' . round($timePassed, 1) . 'ms';
