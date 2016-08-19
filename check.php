@@ -114,11 +114,11 @@ class Check
                         if ($cdVersion == $theVersion) {
                             $this->printStatus('valid', $cdClass . ' ' . $cdVersion);
                         } else {
-                            $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" loaded by "' . $Cube . '" does exist but has a wrong version!');
+                            $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" requested by "' . $Cube . '" does exist but has a wrong version!');
                             $issues++;
                         }
                     } else {
-                        $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" loaded by "' . $Cube . '" does not exist!');
+                        $this->printStatus('invalid', 'The dependency "' . $cdClass . ' ' . $cdVersion . '" requested by "' . $Cube . '" does not exist!');
                         $issues++;
                     }
                 }
