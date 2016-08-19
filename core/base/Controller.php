@@ -13,5 +13,10 @@ namespace core\base {
         {
             echo 'This is the base function!';
         }
+
+        public function init()
+        {
+            // TODO: Implement init() method.
+        }
     }
 }

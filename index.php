@@ -2,6 +2,6 @@
 
 require_once('autoload.php');
 
-$coreIndex = \core\index\Cube::getGateway();
+$index = \core\index\Cube::getGateway();
 
-$coreIndex->sayHelloWorld();
+$index->call();

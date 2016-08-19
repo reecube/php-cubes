@@ -3,10 +3,9 @@
 namespace core\index {
     class Controller implements Gateway
     {
-
-        public function sayHelloWorld()
+        public function init()
         {
-            echo 'Hello World from "index"';
+            // TODO: Implement init() method.
         }
     }
 }

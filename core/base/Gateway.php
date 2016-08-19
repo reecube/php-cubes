@@ -1,7 +1,7 @@
 <?php
 
 namespace core\base {
-    interface Gateway
+    interface Gateway extends \base\ItfGateway
     {
         public function sayHelloWorld();
 
