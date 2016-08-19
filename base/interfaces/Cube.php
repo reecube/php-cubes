@@ -1,7 +1,7 @@
 <?php
 
-namespace base {
-    interface ItfCube
+namespace base\interfaces {
+    interface Cube
     {
         public static function getGateway();
     }

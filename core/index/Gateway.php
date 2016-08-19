@@ -1,7 +1,7 @@
 <?php
 
 namespace core\index {
-    interface Gateway extends \base\ItfGateway
+    interface Gateway extends \base\interfaces\Gateway
     {
     }
 }

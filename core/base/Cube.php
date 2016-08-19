@@ -1,7 +1,7 @@
 <?php
 
 namespace core\base {
-    abstract class Cube implements \base\ItfCube
+    abstract class Cube implements \base\interfaces\Cube
     {
         const VERSION = '1.0.0';
         const DEPENDENCIES = array(

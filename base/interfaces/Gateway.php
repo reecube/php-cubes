@@ -1,7 +1,7 @@
 <?php
 
-namespace base {
-    interface ItfGateway
+namespace base\interfaces {
+    interface Gateway
     {
         public function init();
     }
