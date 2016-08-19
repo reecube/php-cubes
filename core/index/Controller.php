@@ -1,13 +1,12 @@
 <?php
 
 namespace core\index {
-    class Controller
+    class Controller implements Gateway
     {
-        const VERSION = '1.0.0';
-        const DEPENDENCIES = array(
-            'cubes' => array(),
-            'core' => array(),
-            'vendor' => array(),
-        );
+
+        public function sayHelloWorld()
+        {
+            echo 'Hello World';
+        }
     }
 }

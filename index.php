@@ -2,6 +2,6 @@
 
 require_once('autoload.php');
 
-echo \core\index\Controller::VERSION . "\n";
+$coreIndex = \core\index\Cube::getGateway();
 
-var_dump(\core\index\Controller::DEPENDENCIES);
+$coreIndex->sayHelloWorld();
